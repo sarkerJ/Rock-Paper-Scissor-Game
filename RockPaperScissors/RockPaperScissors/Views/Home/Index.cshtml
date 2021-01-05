@@ -4,5 +4,12 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+
+
+    <h2>This is a web version of rock-paper-scissors. <br />In the game you will be playing against a computer.<br /> Once you are ready click the start button</h2>
+
+    <button onclick="location.href='@Url.Action("Privacy", "Home")'">Start</button>
+
+    <button onclick="location.href='@Url.Action("Instructions", "Home")'">More Info</button>
 </div>
