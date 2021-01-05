@@ -7,7 +7,9 @@ namespace RockPaperScissors.Models
 {
     public class GameModel
     {
-        
+        int playerScore;
+        int computerScore;
+        string result;
     }
 
     

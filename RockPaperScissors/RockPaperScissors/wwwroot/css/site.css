@@ -93,3 +93,34 @@ button{
 body{
     background-color:aquamarine;
 }
+
+.containerDiv{
+    align-content:center;
+    background-color:white;
+    height: 70vh;
+}
+
+    .containerDiv .containerContent {
+        display: flex;
+    }
+
+        .containerDiv .containerContent .child {
+            width: 50%;
+            height: 100%;
+            background-color: aqua;
+            flex:1;
+        }
+
+            .containerDiv .containerContent .child .pc {
+                margin-bottom: 0;
+            }
+
+.container1{
+    flex-wrap:wrap;
+}
+    .container1 .blocktext {
+        margin: 0;
+        padding: 15px;
+        text-align: center;
+        background-color: wheat;
+    }
