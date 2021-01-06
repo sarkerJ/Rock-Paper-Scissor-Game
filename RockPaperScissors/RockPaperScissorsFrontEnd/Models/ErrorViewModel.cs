@@ -1,6 +1,6 @@
 using System;
 
-namespace RockPaperScissors.Models
+namespace RockPaperScissorsFrontend.Models
 {
     public class ErrorViewModel
     {
