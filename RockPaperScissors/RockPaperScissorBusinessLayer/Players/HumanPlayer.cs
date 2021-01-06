@@ -6,7 +6,7 @@ namespace RockPaperScissorBusinessLayer
 {
     public class HumanPlayer : Player
     {
-        public HumanPlayer(string name)
+        public HumanPlayer(string name = "PlayerOne")
         {
             PlayerName = name;
         }

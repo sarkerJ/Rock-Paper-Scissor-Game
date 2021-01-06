@@ -8,5 +8,6 @@ namespace RockPaperScissorBusinessLayer
     {
         public string PlayerName { get; set; }
         public Move Move { get; set; }
+        public int Score { get; set; }
     }
 }
