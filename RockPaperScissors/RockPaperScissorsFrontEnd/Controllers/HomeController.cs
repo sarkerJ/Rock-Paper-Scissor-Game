@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RockPaperScissorsFrontend.Models;
+using RockPaperScissorBusinessLayer.Intefaces;
+using RockPaperScissorBusinessLayer;
 
 namespace RockPaperScissorsFrontend.Controllers
 {
@@ -33,10 +35,37 @@ namespace RockPaperScissorsFrontend.Controllers
             return View();
         }
 
-        public IActionResult Game()
+        [HttpGet]
+        [ActionName("Game")]
+        public IActionResult GetGame()
         {
-            return View();
+            GameModel gameM = new GameModel();
+            gameM.result = string.Empty;
+            return View(gameM);
         }
+
+        [HttpPost]
+        [ActionName("Game")]
+        public IActionResult PostGame(GameModel gameM)
+        {
+            gameM.result = string.Empty;
+
+            if (gameM.playerOne == null)
+            {
+                gameM.result = string.Empty;
+                gameM.playerOne = new HumanPlayer();
+                gameM.playerTwo = new BotPlayer();
+            }
+            else
+            {
+                BotPlayer currentBot = (BotPlayer)gameM.playerTwo;
+                gameM.playerTwo.Move = currentBot.GetMove();
+                IGame game = new Game(gameM.playerOne, gameM.playerTwo);
+                gameM.result = game.GameResult();
+            }
+            return View(gameM);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

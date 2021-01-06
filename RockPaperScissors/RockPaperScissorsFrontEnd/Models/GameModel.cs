@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RockPaperScissorBusinessLayer.Intefaces;
+using RockPaperScissorBusinessLayer;
 
 namespace RockPaperScissorsFrontend.Models
 {
     public class GameModel
     {
-        int playerScore;
-        int computerScore;
-        string result;
+        public IPlayer playerOne { get; set; }
+        public IPlayer playerTwo { get; set; }
+        public string result { get; set; }
     }
 
     

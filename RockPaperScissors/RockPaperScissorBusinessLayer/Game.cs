@@ -23,13 +23,13 @@ namespace RockPaperScissorBusinessLayer
 
         public string GameResult(Move playerOneMove, Move playerTwoMove)
         {
-            string result = "Draw";
+            string result = "It is a Draw!";
 
             if ((playerOneMove == Move.Rock && playerTwoMove == Move.Scissors) ||
                 (playerOneMove == Move.Paper && playerTwoMove == Move.Rock) ||
                 (playerOneMove == Move.Scissors && playerTwoMove == Move.Paper))
             {
-                result = "PlayerOne";
+                result = $"{PlayerOne.PlayerName} Scores!";
                 PlayerOne.Score += 1;
             }
 
@@ -37,7 +37,7 @@ namespace RockPaperScissorBusinessLayer
                (playerTwoMove == Move.Paper && playerOneMove == Move.Rock) ||
                (playerTwoMove == Move.Scissors && playerOneMove == Move.Paper))
             {
-                result = "PlayerTwo";
+                result = $"{PlayerTwo.PlayerName} Scores!";
                 PlayerTwo.Score += 1;
             }
 
