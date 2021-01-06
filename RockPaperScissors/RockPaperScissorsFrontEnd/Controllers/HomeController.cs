@@ -50,19 +50,18 @@ namespace RockPaperScissorsFrontend.Controllers
         {
             gameM.result = string.Empty;
 
-            if (gameM.playerOne == null)
-            {
-                gameM.result = string.Empty;
-                gameM.playerOne = new HumanPlayer();
-                gameM.playerTwo = new BotPlayer();
-            }
-            else
-            {
+            //if (gameM.playerOne == null)
+            //{
+            //    gameM.result = string.Empty;
+            //    gameM.playerOne = new HumanPlayer();
+            //    gameM.playerTwo = new BotPlayer();
+            //}
+            
                 BotPlayer currentBot = (BotPlayer)gameM.playerTwo;
                 gameM.playerTwo.Move = currentBot.GetMove();
                 IGame game = new Game(gameM.playerOne, gameM.playerTwo);
                 gameM.result = game.GameResult();
-            }
+            
             return View(gameM);
         }
 

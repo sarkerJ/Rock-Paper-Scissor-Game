@@ -10,11 +10,10 @@ namespace RockPaperScissorBusinessLayer
         public Array moveValues = Enum.GetValues(typeof(Move));
 
 
-        //Setting the bot name and the first move
+        //Setting the bot nameW
         public BotPlayer()
         {
             PlayerName = "BotGenius";
-            GetMove();
         }
 
         public Move GetMove()

@@ -29,5 +29,31 @@
     </div>
 
     <button class="btn-lg" onclick="location.href='@Url.Action("Index", "Home")'">Home</button>
-
 </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @using (Html.BeginForm())
+            {
+                <br /><br />
+        
+                      <fieldset>
+                          <legend>@Model.playerOne.PlayerName</legend>
+                          <label>@Html.RadioButtonFor(m => m.playerOne.Move, Move.rock) Rock</label>
+                          <label>@Html.RadioButtonFor(m => m.playerOne.Move, Move.paper) Paper</label>
+                          <label>@Html.RadioButtonFor(m => m.playerOne.Move, Move.scissors) Scissor</label>
+                      </fieldset>
+
+                <br /><br />
+
+                <fieldset>
+                    <legend>@Model.playerTwo.PlayerName</legend>
+                    <label>@Html.TextBoxFor(m => m.playerTwo.Move) computer</label>
+                </fieldset>
+
+                <br /><br />
+                <h3>@Model.result</h3>
+                <input type="submit" class="btn-primary btn-lg" value="Play"/>
+            }
+        </div>
+    </div>

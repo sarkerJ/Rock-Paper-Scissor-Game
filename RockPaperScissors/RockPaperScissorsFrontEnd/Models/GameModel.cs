@@ -7,8 +7,17 @@ using RockPaperScissorBusinessLayer;
 
 namespace RockPaperScissorsFrontend.Models
 {
+    public enum Move {rock, paper, scissors }
+
     public class GameModel
     {
+        public GameModel()
+        {
+            playerOne = new HumanPlayer();
+            playerTwo = new BotPlayer();
+        }
+
+
         public IPlayer playerOne { get; set; }
         public IPlayer playerTwo { get; set; }
         public string result { get; set; }
