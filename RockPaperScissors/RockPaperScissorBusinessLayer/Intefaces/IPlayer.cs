@@ -7,7 +7,7 @@ namespace RockPaperScissorBusinessLayer
     public interface IPlayer
     {
         public string PlayerName { get; set; }
-        public Move Move { get; set; }
+        public Movess Move { get; set; }
 
         public int Score { get; set; }
     }

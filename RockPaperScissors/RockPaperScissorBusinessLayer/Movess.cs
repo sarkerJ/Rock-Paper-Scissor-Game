@@ -4,5 +4,5 @@ using System.Text;
 
 namespace RockPaperScissorBusinessLayer
 {
-    public enum Move { Rock, Paper, Scissors };
+    public enum Movess { Rock, Paper, Scissors };
 }

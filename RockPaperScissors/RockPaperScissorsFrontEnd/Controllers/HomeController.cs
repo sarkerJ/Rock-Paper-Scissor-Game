@@ -46,9 +46,8 @@ namespace RockPaperScissorsFrontend.Controllers
 
         [HttpPost]
         [ActionName("Game")]
-        public IActionResult PostGame(GameModel gameM)
+        public IActionResult PostGame(Movess move)
         {
-            gameM.result = string.Empty;
 
             //if (gameM.playerOne == null)
             //{
@@ -56,13 +55,18 @@ namespace RockPaperScissorsFrontend.Controllers
             //    gameM.playerOne = new HumanPlayer();
             //    gameM.playerTwo = new BotPlayer();
             //}
+
+            GameModel gameM = new GameModel();
+
+            gameM.playerOne.Move = move;
+
+            gameM.result = string.Empty;
+            BotPlayer currentBot = (BotPlayer)gameM.playerTwo;
+            gameM.playerTwo.Move = currentBot.GetMove();
+            IGame game = new Game(gameM.playerOne, gameM.playerTwo);
+            gameM.result = game.GameResult();
             
-                BotPlayer currentBot = (BotPlayer)gameM.playerTwo;
-                gameM.playerTwo.Move = currentBot.GetMove();
-                IGame game = new Game(gameM.playerOne, gameM.playerTwo);
-                gameM.result = game.GameResult();
-            
-            return View(gameM);
+            return Json( new { gameJson  = gameM});
         }
 
 

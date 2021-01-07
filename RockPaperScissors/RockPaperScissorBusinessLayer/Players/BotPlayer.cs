@@ -7,7 +7,7 @@ namespace RockPaperScissorBusinessLayer
     public class BotPlayer : Player
     {
         public static Random rand = new Random();
-        public Array moveValues = Enum.GetValues(typeof(Move));
+        public Array moveValues = Enum.GetValues(typeof(Movess));
 
 
         //Setting the bot nameW
@@ -16,9 +16,9 @@ namespace RockPaperScissorBusinessLayer
             PlayerName = "BotGenius";
         }
 
-        public Move GetMove()
+        public Movess GetMove()
         {
-            Move = (Move)moveValues.GetValue(rand.Next(moveValues.Length));
+            Move = (Movess)moveValues.GetValue(rand.Next(moveValues.Length));
             return Move;
         }
 

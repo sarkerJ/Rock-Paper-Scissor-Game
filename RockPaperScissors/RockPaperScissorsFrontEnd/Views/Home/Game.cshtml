@@ -1,4 +1,5 @@
 ﻿@using RockPaperScissorsFrontend.Models
+@using RockPaperScissorBusinessLayer;
 @model GameModel
 
 @{
@@ -7,19 +8,21 @@
 
 
 <div class="text-center">
-
     <h1>Best of luck!</h1>
     <div class="containerDiv">
+
+
         <div class="container1">
             <p class="blocktext">Computer Wins!</p>
         </div>
-
         <div class="containerContent">
             <div class="child">
                 <p class="pc">Player 1: </p>
-
                 <div>
 
+                    <div onclick="testMethod('Rock')">Rock</div>
+                    <div onclick="testMethod('Paper')">Paper</div>
+                    <div onclick="testMethod('Scissors')">Scissors</div>
                 </div>
             </div>
             <div class="child">
@@ -31,29 +34,65 @@
     <button class="btn-lg" onclick="location.href='@Url.Action("Index", "Home")'">Home</button>
 </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            @using (Html.BeginForm())
-            {
-                <br /><br />
-        
-                      <fieldset>
-                          <legend>@Model.playerOne.PlayerName</legend>
-                          <label>@Html.RadioButtonFor(m => m.playerOne.Move, Move.rock) Rock</label>
-                          <label>@Html.RadioButtonFor(m => m.playerOne.Move, Move.paper) Paper</label>
-                          <label>@Html.RadioButtonFor(m => m.playerOne.Move, Move.scissors) Scissor</label>
-                      </fieldset>
+<p>Player One move</p>
+<p id="player1Move">@Model.playerOne.Move</p>
 
-                <br /><br />
+<p>Player two move</p>
+<p id="player2Move">@Model.playerTwo.Move</p>
 
-                <fieldset>
-                    <legend>@Model.playerTwo.PlayerName</legend>
-                    <label>@Html.TextBoxFor(m => m.playerTwo.Move) computer</label>
-                </fieldset>
+<p >Result</p>
+<p id="result">@Model.result</p>
 
-                <br /><br />
-                <h3>@Model.result</h3>
-                <input type="submit" class="btn-primary btn-lg" value="Play"/>
-            }
-        </div>
+
+@*<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm())
+        {
+            <br /><br />
+
+            <fieldset>
+                <legend>@Model.playerOne.PlayerName</legend>
+                <label>@Html.RadioButtonFor(m => m.playerOne.Move, Movess.Rock) Rock</label>
+                <label>@Html.RadioButtonFor(m => m.playerOne.Move, Movess.Paper) Paper</label>
+                <label>@Html.RadioButtonFor(m => m.playerOne.Move, Movess.Scissors) Scissor</label>
+            </fieldset>
+
+            <br /><br />
+
+            <fieldset>
+                <legend>@Model.playerTwo.PlayerName</legend>
+                <label>@Html.TextBoxFor(m => m.playerTwo.Move) computer</label>
+
+                <p>@Model.playerTwo.Move</p>
+            </fieldset>
+
+            <br /><br />
+            <h3>@Model.result</h3>
+
+            <input type="submit" class="btn-primary btn-lg" value="Play" />
+            <input type="submit" class="btn-primary btn-lg" value="Play" />
+            <input type="submit" class="btn-primary btn-lg" value="Play" />
+
+            <button class="btn-lg" onclick="TestMethod()">Home</button>
+
+        }
     </div>
+</div>*@
+
+
+<script>
+    function testMethod( value)
+    {
+        if (value == "Rock")
+        {
+            $.post("@Url.Action("Game", "Home", new { move = Movess.Rock})", function ( gameJsonName)
+            {
+                document.querySelector("#player1Move").innerHTML = gameJsonName.playerOne;
+                document.querySelector("#player2Move").innerHTML = gameJsonName.playerTwo;
+                $("#result").innerHTML = gameJsonName.result;
+                
+            });
+        }
+    }
+
+</script>
