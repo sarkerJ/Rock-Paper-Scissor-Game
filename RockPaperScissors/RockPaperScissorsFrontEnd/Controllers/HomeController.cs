@@ -49,6 +49,7 @@ namespace RockPaperScissorsFrontend.Controllers
         public IActionResult PostGame(Movess move)
         {
 
+
             GameModel gameM = new GameModel();
 
             gameM.playerOne.Move = move;

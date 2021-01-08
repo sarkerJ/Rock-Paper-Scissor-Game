@@ -13,25 +13,22 @@
 
 
         <div class="container1">
-            <p class="blocktext">Computer Wins!</p>
+            <p id="result" class="blocktext">Computer Wins!</p>
         </div>
         <div class="containerContent">
             <div class="child">
-                <p class="pc">Player 1: </p>
-                <div>
-
-                    <div style="cursor:pointer" onclick="testMethod('rock')">Rock</div>
-                    <div style="cursor:pointer" onclick="testMethod('paper')">Paper</div>
-                    <div style="cursor:pointer" onclick="testMethod('scissors')">Scissors</div>
-                </div>
+                <p id="playerOne" class="pc">Player 1</p>
             </div>
             <div class="child">
-                <p class="pc">Player 2: </p>
+                <p id="playerTwo" class="pc">Player 2</p>
             </div>
         </div>
     </div>
 
     <button class="btn-lg" onclick="location.href='@Url.Action("Index", "Home")'">Home</button>
+    <div style="cursor:pointer" onclick="testMethod('rock')">Rock</div>
+    <div style="cursor:pointer" onclick="testMethod('paper')">Paper</div>
+    <div style="cursor:pointer" onclick="testMethod('scissors')">Scissors</div>
 </div>
 
 <p>Player One move</p>
@@ -40,53 +37,17 @@
 <p>Player two move</p>
 <p id="player2Move">Empty</p>
 
-<p >Result</p>
-<p id="result">Empty</p>
-
-
-@*<div class="row">
-    <div class="col-md-4">
-        @using (Html.BeginForm())
-        {
-            <br /><br />
-
-            <fieldset>
-                <legend>@Model.playerOne.PlayerName</legend>
-                <label>@Html.RadioButtonFor(m => m.playerOne.Move, Movess.Rock) Rock</label>
-                <label>@Html.RadioButtonFor(m => m.playerOne.Move, Movess.Paper) Paper</label>
-                <label>@Html.RadioButtonFor(m => m.playerOne.Move, Movess.Scissors) Scissor</label>
-            </fieldset>
-
-            <br /><br />
-
-            <fieldset>
-                <legend>@Model.playerTwo.PlayerName</legend>
-                <label>@Html.TextBoxFor(m => m.playerTwo.Move) computer</label>
-
-                <p>@Model.playerTwo.Move</p>
-            </fieldset>
-
-            <br /><br />
-            <h3>@Model.result</h3>
-
-            <input type="submit" class="btn-primary btn-lg" value="Play" />
-            <input type="submit" class="btn-primary btn-lg" value="Play" />
-            <input type="submit" class="btn-primary btn-lg" value="Play" />
-
-            <button class="btn-lg" onclick="TestMethod()">Home</button>
-
-        }
-    </div>
-</div>*@
 
 
 <script>
-    function testMethod(value){
+    function testMethod(value)
+    {
         if (value == "rock") {
             $.post("@Url.Action("PostGame", "Home", new { move = Movess.Rock})", function (res) {
                 document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
                 document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
                 document.querySelector("#result").innerHTML = res.data.result;
+                getPlayerInfo(res);
 
             });
         }
@@ -94,7 +55,8 @@
              $.post("@Url.Action("PostGame", "Home", new { move = Movess.Paper})", function (res) {
                 document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
                 document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
-                document.querySelector("#result").innerHTML = res.data.result;
+                 document.querySelector("#result").innerHTML = res.data.result;
+                 getPlayerInfo(res);
 
             });
         }
@@ -102,9 +64,18 @@
              $.post("@Url.Action("PostGame", "Home", new { move = Movess.Scissors})", function (res) {
                 document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
                 document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
-                document.querySelector("#result").innerHTML = res.data.result;
+                 //document.querySelector("#result").innerHTML = res.data.result;
 
+
+                getPlayerInfo(res);
             });
         }
+    }
+
+    function getPlayerInfo(value) {
+
+        document.querySelector("#playerOne").innerHTML = value.data.playerOne.playerName + ": " + value.data.playerOne.score;
+        document.querySelector("#playerTwo").innerHTML = value.data.playerTwo.playerName + ": " + value.data.playerTwo.score;
+
     }
 </script>
