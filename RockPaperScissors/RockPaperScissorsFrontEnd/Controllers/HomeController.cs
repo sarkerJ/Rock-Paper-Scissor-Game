@@ -40,21 +40,14 @@ namespace RockPaperScissorsFrontend.Controllers
         public IActionResult GetGame()
         {
             GameModel gameM = new GameModel();
-            gameM.result = string.Empty;
+            gameM.result = "Empty";
             return View(gameM);
         }
 
         [HttpPost]
-        [ActionName("Game")]
+        //[ActionName("Game")]
         public IActionResult PostGame(Movess move)
         {
-
-            //if (gameM.playerOne == null)
-            //{
-            //    gameM.result = string.Empty;
-            //    gameM.playerOne = new HumanPlayer();
-            //    gameM.playerTwo = new BotPlayer();
-            //}
 
             GameModel gameM = new GameModel();
 
@@ -66,7 +59,7 @@ namespace RockPaperScissorsFrontend.Controllers
             IGame game = new Game(gameM.playerOne, gameM.playerTwo);
             gameM.result = game.GameResult();
             
-            return Json( new { gameJson  = gameM});
+            return Json( new { Data = gameM });
         }
 
 

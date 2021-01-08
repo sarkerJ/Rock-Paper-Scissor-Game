@@ -20,9 +20,9 @@
                 <p class="pc">Player 1: </p>
                 <div>
 
-                    <div onclick="testMethod('Rock')">Rock</div>
-                    <div onclick="testMethod('Paper')">Paper</div>
-                    <div onclick="testMethod('Scissors')">Scissors</div>
+                    <div style="cursor:pointer" onclick="testMethod('rock')">Rock</div>
+                    <div style="cursor:pointer" onclick="testMethod('paper')">Paper</div>
+                    <div style="cursor:pointer" onclick="testMethod('scissors')">Scissors</div>
                 </div>
             </div>
             <div class="child">
@@ -35,13 +35,13 @@
 </div>
 
 <p>Player One move</p>
-<p id="player1Move">@Model.playerOne.Move</p>
+<p id="player1Move">Empty</p>
 
 <p>Player two move</p>
-<p id="player2Move">@Model.playerTwo.Move</p>
+<p id="player2Move">Empty</p>
 
 <p >Result</p>
-<p id="result">@Model.result</p>
+<p id="result">Empty</p>
 
 
 @*<div class="row">
@@ -81,18 +81,30 @@
 
 
 <script>
-    function testMethod( value)
-    {
-        if (value == "Rock")
-        {
-            $.post("@Url.Action("Game", "Home", new { move = Movess.Rock})", function ( gameJsonName)
-            {
-                document.querySelector("#player1Move").innerHTML = gameJsonName.playerOne;
-                document.querySelector("#player2Move").innerHTML = gameJsonName.playerTwo;
-                $("#result").innerHTML = gameJsonName.result;
-                
+    function testMethod(value){
+        if (value == "rock") {
+            $.post("@Url.Action("PostGame", "Home", new { move = Movess.Rock})", function (res) {
+                document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
+                document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
+                document.querySelector("#result").innerHTML = res.data.result;
+
+            });
+        }
+        else if (value == "paper") {
+             $.post("@Url.Action("PostGame", "Home", new { move = Movess.Paper})", function (res) {
+                document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
+                document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
+                document.querySelector("#result").innerHTML = res.data.result;
+
+            });
+        }
+        else if (value == "scissors") {
+             $.post("@Url.Action("PostGame", "Home", new { move = Movess.Scissors})", function (res) {
+                document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
+                document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
+                document.querySelector("#result").innerHTML = res.data.result;
+
             });
         }
     }
-
 </script>
