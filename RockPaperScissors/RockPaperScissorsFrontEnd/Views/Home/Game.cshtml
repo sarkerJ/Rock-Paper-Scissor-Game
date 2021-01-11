@@ -105,23 +105,12 @@
     }
 
     function changeSelectedOptionImg(value, type) {
-
         divId = "#chosenImage";
+        if (type == "Bot") { divId = "#botChosenImage"; }
 
-        if(type == "Bot") {
-            divId = "#botChosenImage";
-        }
-
-        if (value == 0) {
-            document.querySelector(divId).innerHTML = '<img src="/imgs/Rock.jpg" alt="testImg" />'
-        }
-        else if (value == 1) {
-            document.querySelector(divId).innerHTML = '<img src="/imgs/Paper.jpg" alt="testImg" />'
-        }
-        else if (value == 2) {
-            document.querySelector(divId).innerHTML = '<img src="/imgs/Scissors.jpg" alt="testImg" />'
-
-        }
+        if (value == 0) { document.querySelector(divId).innerHTML = '<img src="/imgs/Rock.jpg" alt="testImg" />' }
+        else if (value == 1) { document.querySelector(divId).innerHTML = '<img src="/imgs/Paper.jpg" alt="testImg" />' }
+        else if (value == 2) { document.querySelector(divId).innerHTML = '<img src="/imgs/Scissors.jpg" alt="testImg" />' }
     }
 
 </script>
