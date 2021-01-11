@@ -28,15 +28,21 @@
         <div class="containerMiddle">
             <div class="child" style="background-color:chartreuse">
                 <div class="chosenImgContainer">
-                    <div class="chosenImg">
+                    <div id="chosenImage" class="chosenImg">
                         <img src="~/imgs/testImg.jpg" alt="testImg" />
                     </div>
                 </div>
 
                 <div class="userOptionsContainer">
-                    <div style="cursor:pointer; background-color:blue; flex:1; " onclick="testMethod('rock')">Rock</div>
-                    <div style="cursor:pointer; background-color:cadetblue; flex:1;"  onclick="testMethod('paper')">Paper</div>
-                    <div style="cursor:pointer; background-color:lightblue; flex:1;" onclick="testMethod('scissors')">Scissors</div>
+                    <div class="optionImg" onclick="testMethod('rock')">
+                        <img src="~/imgs/Rock.jpg" alt="testImg" />
+                    </div>
+                    <div class="optionImg" onclick="testMethod('paper')">
+                        <img src="~/imgs/Paper.jpg" alt="testImg" />
+                    </div>
+                    <div class="optionImg" onclick="testMethod('scissors')">
+                        <img src="~/imgs/Scissors.jpg" alt="testImg" />
+                    </div>
                 </div>
 
 
@@ -59,7 +65,6 @@
 
 <p>Player One move</p>
 <p id="player1Move">Empty</p>
-
 <p>Player two move</p>
 <p id="player2Move">Empty</p>
 
@@ -74,7 +79,7 @@
                 document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
                 document.querySelector("#result").innerHTML = res.data.result;
                 getPlayerInfo(res);
-
+                changeSelectedOptionImg(0);
             });
         }
         else if (value == "paper") {
@@ -83,6 +88,7 @@
                 document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
                  document.querySelector("#result").innerHTML = res.data.result;
                  getPlayerInfo(res);
+                 changeSelectedOptionImg(1);
 
             });
         }
@@ -90,10 +96,9 @@
              $.post("@Url.Action("PostGame", "Home", new { move = Movess.Scissors})", function (res) {
                 document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
                 document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
-                 //document.querySelector("#result").innerHTML = res.data.result;
+                 getPlayerInfo(res);
+                 changeSelectedOptionImg(2);
 
-
-                getPlayerInfo(res);
             });
         }
     }
@@ -102,6 +107,21 @@
 
         document.querySelector("#playerOne").innerHTML = value.data.playerOne.playerName + ": " + value.data.playerOne.score;
         document.querySelector("#playerTwo").innerHTML = value.data.playerTwo.playerName + ": " + value.data.playerTwo.score;
+    }
+
+    function changeSelectedOptionImg(value) {
+
+        if (value == 0) {
+            document.querySelector("#chosenImage").innerHTML = '<img src="/imgs/Rock.jpg" alt="testImg" />'
+        }
+        else if (value == 1) {
+            document.querySelector("#chosenImage").innerHTML = '<img src="/imgs/Paper.jpg" alt="testImg" />'
+        }
+        else if (value == 2) {
+            document.querySelector("#chosenImage").innerHTML = '<img src="/imgs/Scissors.jpg" alt="testImg" />'
+
+        }
 
     }
+
 </script>
