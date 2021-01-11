@@ -49,24 +49,20 @@
             </div>
 
             <div class="child" style="background-color:green">
-                
+                <div class="chosenImgContainer" style="background-color:transparent">
+                    <div id="botChosenImage" class="chosenImg">
+                        <img src="~/imgs/testImg.jpg" alt="testImg" />
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
 
 
-    <button class="btn-lg" onclick="location.href='@Url.Action("Index", "Home")'">Home</button>
+    @*<button class="btn-lg" onclick="location.href='@Url.Action("Index", "Home")'">Home</button>*@
 
-    @*<div style="cursor:pointer; background-color:blue;" onclick="testMethod('rock')">Rock</div>
-    <div style="cursor:pointer; background-color:cadetblue"; onclick="testMethod('paper')">Paper</div>
-    <div style="cursor:pointer; background-color:lightblue;" onclick="testMethod('scissors')">Scissors</div>*@
 </div>
-
-<p>Player One move</p>
-<p id="player1Move">Empty</p>
-<p>Player two move</p>
-<p id="player2Move">Empty</p>
 
 
 
@@ -75,30 +71,28 @@
     {
         if (value == "rock") {
             $.post("@Url.Action("PostGame", "Home", new { move = Movess.Rock})", function (res) {
-                document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
-                document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
                 document.querySelector("#result").innerHTML = res.data.result;
                 getPlayerInfo(res);
-                changeSelectedOptionImg(0);
+                changeSelectedOptionImg(res.data.playerOne.move, "User");
+                changeSelectedOptionImg(res.data.playerTwo.move, "Bot");
+
             });
         }
         else if (value == "paper") {
              $.post("@Url.Action("PostGame", "Home", new { move = Movess.Paper})", function (res) {
-                document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
-                document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
                  document.querySelector("#result").innerHTML = res.data.result;
                  getPlayerInfo(res);
-                 changeSelectedOptionImg(1);
+                 changeSelectedOptionImg(res.data.playerOne.move, "User");
+                 changeSelectedOptionImg(res.data.playerTwo.move, "Bot");
 
             });
         }
         else if (value == "scissors") {
              $.post("@Url.Action("PostGame", "Home", new { move = Movess.Scissors})", function (res) {
-                document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
-                 document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
                  document.querySelector("#result").innerHTML = res.data.result;
                  getPlayerInfo(res);
-                 changeSelectedOptionImg(2);
+                 changeSelectedOptionImg(res.data.playerOne.move, "User");
+                 changeSelectedOptionImg(res.data.playerTwo.move, "Bot");
 
             });
         }
@@ -110,19 +104,24 @@
         document.querySelector("#playerTwo").innerHTML = value.data.playerTwo.playerName + ": " + value.data.playerTwo.score;
     }
 
-    function changeSelectedOptionImg(value) {
+    function changeSelectedOptionImg(value, type) {
+
+        divId = "#chosenImage";
+
+        if(type == "Bot") {
+            divId = "#botChosenImage";
+        }
 
         if (value == 0) {
-            document.querySelector("#chosenImage").innerHTML = '<img src="/imgs/Rock.jpg" alt="testImg" />'
+            document.querySelector(divId).innerHTML = '<img src="/imgs/Rock.jpg" alt="testImg" />'
         }
         else if (value == 1) {
-            document.querySelector("#chosenImage").innerHTML = '<img src="/imgs/Paper.jpg" alt="testImg" />'
+            document.querySelector(divId).innerHTML = '<img src="/imgs/Paper.jpg" alt="testImg" />'
         }
         else if (value == 2) {
-            document.querySelector("#chosenImage").innerHTML = '<img src="/imgs/Scissors.jpg" alt="testImg" />'
+            document.querySelector(divId).innerHTML = '<img src="/imgs/Scissors.jpg" alt="testImg" />'
 
         }
-
     }
 
 </script>
