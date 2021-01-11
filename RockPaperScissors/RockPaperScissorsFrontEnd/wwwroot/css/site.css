@@ -91,19 +91,19 @@ button{
 }
 
 body{
-    background-color:aquamarine;
+    background-color:white;
 }
 
 .containerDiv{
     align-content:center;
     background-color:white;
-    height: 70vh;
-    /*overflow:hidden;*/
+    height:60vh;
+    overflow:hidden;
 }
 
     .containerDiv .containterTop {
         display: flex;
-        height: 5%;
+        height: 10%;
     }
 
         .containerDiv .containterTop .child {
@@ -115,11 +115,12 @@ body{
 
             .containerDiv .containterTop .child .pc {
                 margin-bottom: 0;
+                padding: 10px;
             }
 
     .containerDiv .containerMiddle {
         width: 100%;
-        height: 85%;
+        height: 90%;
         background-color: cadetblue;
         display: flex;
     }
@@ -131,14 +132,14 @@ body{
 
             .containerDiv .containerMiddle .child .chosenImgContainer{
                 width: 100%;
-                height: 70%;
+                height: 100%;
                 background-color:black;
             }
 
                 .containerDiv .containerMiddle .child .chosenImgContainer .chosenImg {
                     width: 50%;
                     height: 100%;
-                    padding-top: 60px;
+                    padding-top: 50px;
                     padding-bottom: 20px;
                     margin-left: 150px;
                     background-color: transparent;
@@ -149,20 +150,22 @@ body{
                     height: 80%;
                 }
 
-            .containerDiv .containerMiddle .child .userOptionsContainer {
-                display: flex;
-                width: 100%;
-                height: 30%;
-                background-color:black;
-            }
+        .userOptionsContainer {
+            display: flex;
+            width: 100%;
+            height: 30%;
+            background-color: black;
+            align-items: center;
+            justify-content: center;
+        }
 
-                .containerDiv .containerMiddle .child .userOptionsContainer .optionImg {
-                    width: 100%;
+                .userOptionsContainer .optionImg {
+                    width: 12%;
                     height: 100%;
                     cursor:pointer;
                 }
 
-                    .containerDiv .containerMiddle .child .userOptionsContainer .optionImg img {
+                    .userOptionsContainer .optionImg img {
                         padding-top: 1%;
                         padding-bottom: 1%;
                         padding-left: 0.1%;

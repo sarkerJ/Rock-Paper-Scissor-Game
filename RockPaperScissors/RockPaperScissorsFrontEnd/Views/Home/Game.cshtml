@@ -8,7 +8,6 @@
 
 
 <div class="text-center">
-    <h1>Best of luck!</h1>
     <div class="containerDiv">
 
         <div class="container1">
@@ -29,34 +28,33 @@
             <div class="child">
                 <div class="chosenImgContainer">
                     <div id="chosenImage" class="chosenImg">
-                        <img src="~/imgs/testImg.jpg" alt="testImg" />
+                        <img src="~/imgs/rpc2.png" alt="rockPaperScissorImg" />
                     </div>
                 </div>
-
-                <div class="userOptionsContainer">
-                    <div class="optionImg" onclick="testMethod('rock')">
-                        <img src="~/imgs/Rock.jpg" alt="testImg" />
-                    </div>
-                    <div class="optionImg" onclick="testMethod('paper')">
-                        <img src="~/imgs/Paper.jpg" alt="testImg" />
-                    </div>
-                    <div class="optionImg" onclick="testMethod('scissors')">
-                        <img src="~/imgs/Scissors.jpg" alt="testImg" />
-                    </div>
-                </div>
-
-
             </div>
 
             <div class="child">
-                <div class="chosenImgContainer" style="background-color:gray">
+                <div class="chosenImgContainer" style="background-color:#222121">
                     <div id="botChosenImage" class="chosenImg">
-                        <img src="~/imgs/testImg.jpg" alt="testImg" />
+                        <img src="~/imgs/rpc2.png" alt="rockPaperScissorImg" />
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
+
+    <br />
+    <div class="userOptionsContainer">
+        <div class="optionImg" onclick="testMethod('rock')">
+            <img src="~/imgs/Rock.png" alt="rockImg" />
+        </div>
+        <div class="optionImg" onclick="testMethod('paper')">
+            <img src="~/imgs/Paper.png" alt="PaperImg" />
+        </div>
+        <div class="optionImg" onclick="testMethod('scissors')">
+            <img src="~/imgs/Scissors.png" alt="ScissorImg" />
+        </div>
     </div>
 
 
@@ -100,17 +98,17 @@
 
     function getPlayerInfo(value) {
 
-        document.querySelector("#playerOne").innerHTML = value.data.playerOne.playerName + ": " + value.data.playerOne.score;
-        document.querySelector("#playerTwo").innerHTML = value.data.playerTwo.playerName + ": " + value.data.playerTwo.score;
+        document.querySelector("#playerOne").innerHTML = value.data.playerOne.playerName + "Score : " + value.data.playerOne.score;
+        document.querySelector("#playerTwo").innerHTML = value.data.playerTwo.playerName + "Score : " + value.data.playerTwo.score;
     }
 
     function changeSelectedOptionImg(value, type) {
         divId = "#chosenImage";
         if (type == "Bot") { divId = "#botChosenImage"; }
 
-        if (value == 0) { document.querySelector(divId).innerHTML = '<img src="/imgs/Rock.jpg" alt="testImg" />' }
-        else if (value == 1) { document.querySelector(divId).innerHTML = '<img src="/imgs/Paper.jpg" alt="testImg" />' }
-        else if (value == 2) { document.querySelector(divId).innerHTML = '<img src="/imgs/Scissors.jpg" alt="testImg" />' }
+        if (value == 0) { document.querySelector(divId).innerHTML = '<img src="/imgs/Rock.png" alt="rockImg" />' }
+        else if (value == 1) { document.querySelector(divId).innerHTML = '<img src="/imgs/Paper.png" alt="PaperImg" />' }
+        else if (value == 2) { document.querySelector(divId).innerHTML = '<img src="/imgs/Scissors.png" alt="ScissorImg" />' }
     }
 
 </script>

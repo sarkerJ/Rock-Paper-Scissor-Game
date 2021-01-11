@@ -17,8 +17,6 @@ namespace RockPaperScissorsFrontend.Models
             playerTwo = new BotPlayer();
         }
 
-
-
         public IPlayer playerOne { get; set; }
         public IPlayer playerTwo { get; set; }
         public string result { get; set; }
