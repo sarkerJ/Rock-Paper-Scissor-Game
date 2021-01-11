@@ -15,6 +15,10 @@ namespace RockPaperScissorsFrontend.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        //Created a static model to ensure that the model is stored even after the Get method and the Post method end
+        // without static the model turns to null after GetGame is returned and refreshes the page
+        //static also means the player scores are now saved!
+        public static GameModel gameM; 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -39,7 +43,7 @@ namespace RockPaperScissorsFrontend.Controllers
         [ActionName("Game")]
         public IActionResult GetGame()
         {
-            GameModel gameM = new GameModel();
+            gameM = new GameModel();
             gameM.result = "Empty";
             return View(gameM);
         }
@@ -48,14 +52,19 @@ namespace RockPaperScissorsFrontend.Controllers
         //[ActionName("Game")]
         public IActionResult PostGame(Movess move)
         {
-            GameModel gameM = new GameModel();
-            gameM.playerOne.Move = move;
-            gameM.result = string.Empty;
-            BotPlayer currentBot = (BotPlayer)gameM.playerTwo;
-            gameM.playerTwo.Move = currentBot.GetMove();
-            IGame game = new Game(gameM.playerOne, gameM.playerTwo);
-            gameM.result = game.GameResult();
+            if(gameM != null)
+            {
+                gameM.playerOne.Move = move;
+                gameM.result = string.Empty;
+                BotPlayer currentBot = (BotPlayer)gameM.playerTwo;
+                gameM.playerTwo.Move = currentBot.GetMove();
+                IGame game = new Game(gameM.playerOne, gameM.playerTwo);
 
+                gameM.result = game.GameResult();
+
+            }
+            
+            
             return Json( new { Data = gameM });
         }
 
