@@ -95,7 +95,8 @@
         else if (value == "scissors") {
              $.post("@Url.Action("PostGame", "Home", new { move = Movess.Scissors})", function (res) {
                 document.querySelector("#player1Move").innerHTML = res.data.playerOne.move;
-                document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
+                 document.querySelector("#player2Move").innerHTML = res.data.playerTwo.move;
+                 document.querySelector("#result").innerHTML = res.data.result;
                  getPlayerInfo(res);
                  changeSelectedOptionImg(2);
 
