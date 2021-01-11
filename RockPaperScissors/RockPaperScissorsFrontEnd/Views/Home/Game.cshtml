@@ -11,11 +11,12 @@
     <h1>Best of luck!</h1>
     <div class="containerDiv">
 
-
         <div class="container1">
             <p id="result" class="blocktext">Computer Wins!</p>
         </div>
-        <div class="containerContent">
+
+
+        <div class="containterTop">
             <div class="child">
                 <p id="playerOne" class="pc">Player 1</p>
             </div>
@@ -23,12 +24,37 @@
                 <p id="playerTwo" class="pc">Player 2</p>
             </div>
         </div>
+
+        <div class="containerMiddle">
+            <div class="child" style="background-color:chartreuse">
+                <div class="chosenImgContainer">
+                    <div class="chosenImg">
+                        <img src="~/imgs/testImg.jpg" alt="testImg" />
+                    </div>
+                </div>
+
+                <div class="userOptionsContainer">
+                    <div style="cursor:pointer; background-color:blue; flex:1; " onclick="testMethod('rock')">Rock</div>
+                    <div style="cursor:pointer; background-color:cadetblue; flex:1;"  onclick="testMethod('paper')">Paper</div>
+                    <div style="cursor:pointer; background-color:lightblue; flex:1;" onclick="testMethod('scissors')">Scissors</div>
+                </div>
+
+
+            </div>
+
+            <div class="child" style="background-color:green">
+                
+            </div>
+        </div>
+
     </div>
 
+
     <button class="btn-lg" onclick="location.href='@Url.Action("Index", "Home")'">Home</button>
-    <div style="cursor:pointer" onclick="testMethod('rock')">Rock</div>
-    <div style="cursor:pointer" onclick="testMethod('paper')">Paper</div>
-    <div style="cursor:pointer" onclick="testMethod('scissors')">Scissors</div>
+
+    @*<div style="cursor:pointer; background-color:blue;" onclick="testMethod('rock')">Rock</div>
+    <div style="cursor:pointer; background-color:cadetblue"; onclick="testMethod('paper')">Paper</div>
+    <div style="cursor:pointer; background-color:lightblue;" onclick="testMethod('scissors')">Scissors</div>*@
 </div>
 
 <p>Player One move</p>

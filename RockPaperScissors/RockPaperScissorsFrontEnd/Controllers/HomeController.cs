@@ -48,18 +48,14 @@ namespace RockPaperScissorsFrontend.Controllers
         //[ActionName("Game")]
         public IActionResult PostGame(Movess move)
         {
-
-
             GameModel gameM = new GameModel();
-
             gameM.playerOne.Move = move;
-
             gameM.result = string.Empty;
             BotPlayer currentBot = (BotPlayer)gameM.playerTwo;
             gameM.playerTwo.Move = currentBot.GetMove();
             IGame game = new Game(gameM.playerOne, gameM.playerTwo);
             gameM.result = game.GameResult();
-            
+
             return Json( new { Data = gameM });
         }
 

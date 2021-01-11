@@ -98,25 +98,66 @@ body{
     align-content:center;
     background-color:white;
     height: 70vh;
+    /*overflow:hidden;*/
 }
 
-    .containerDiv .containerContent {
+    .containerDiv .containterTop {
         display: flex;
+        height: 5%;
     }
 
-        .containerDiv .containerContent .child {
+        .containerDiv .containterTop .child {
             width: 50%;
             height: 100%;
             background-color: aqua;
-            flex:1;
+            flex: 1;
         }
 
-            .containerDiv .containerContent .child .pc {
+            .containerDiv .containterTop .child .pc {
                 margin-bottom: 0;
+            }
+
+    .containerDiv .containerMiddle {
+        width: 100%;
+        height: 85%;
+        background-color: cadetblue;
+        display: flex;
+    }
+
+        .containerDiv .containerMiddle .child {
+            width: 50%;
+            height: 100%;
+        }
+
+            .containerDiv .containerMiddle .child .chosenImgContainer{
+                width: 100%;
+                height: 60%;
+                background-color:chocolate;
+            }
+
+                .containerDiv .containerMiddle .child .chosenImgContainer .chosenImg {
+                    width: 100%;
+                    height: 100%;
+                    padding: 10px;
+                    padding-left: 100px;
+                    padding-right: 100px;
+                }
+
+                .containerDiv .containerMiddle .child .chosenImgContainer .chosenImg img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+            .containerDiv .containerMiddle .child .userOptionsContainer {
+                display: flex;
+                width: 100%;
+                height: 40%;
+                background-color:red;
             }
 
 .container1{
     flex-wrap:wrap;
+    height:10%;
 }
     .container1 .blocktext {
         margin: 0;
