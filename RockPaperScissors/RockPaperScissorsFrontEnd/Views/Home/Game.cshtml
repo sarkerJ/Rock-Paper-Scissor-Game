@@ -69,7 +69,7 @@
     {
         if (value == "rock") {
             $.post("@Url.Action("PostGame", "Home", new { move = Movess.Rock})", function (res) {
-                document.querySelector("#result").innerHTML = res.data.result;
+                changeResultDiv(res.data.result, res.data);
                 getPlayerInfo(res);
                 changeSelectedOptionImg(res.data.playerOne.move, "User");
                 changeSelectedOptionImg(res.data.playerTwo.move, "Bot");
@@ -78,7 +78,7 @@
         }
         else if (value == "paper") {
              $.post("@Url.Action("PostGame", "Home", new { move = Movess.Paper})", function (res) {
-                 document.querySelector("#result").innerHTML = res.data.result;
+                 changeResultDiv(res.data.result, res.data);
                  getPlayerInfo(res);
                  changeSelectedOptionImg(res.data.playerOne.move, "User");
                  changeSelectedOptionImg(res.data.playerTwo.move, "Bot");
@@ -87,7 +87,7 @@
         }
         else if (value == "scissors") {
              $.post("@Url.Action("PostGame", "Home", new { move = Movess.Scissors})", function (res) {
-                 document.querySelector("#result").innerHTML = res.data.result;
+                 changeResultDiv(res.data.result, res.data);
                  getPlayerInfo(res);
                  changeSelectedOptionImg(res.data.playerOne.move, "User");
                  changeSelectedOptionImg(res.data.playerTwo.move, "Bot");
@@ -109,6 +109,19 @@
         if (value == 0) { document.querySelector(divId).innerHTML = '<img src="/imgs/Rock.png" alt="rockImg" />' }
         else if (value == 1) { document.querySelector(divId).innerHTML = '<img src="/imgs/Paper.png" alt="PaperImg" />' }
         else if (value == 2) { document.querySelector(divId).innerHTML = '<img src="/imgs/Scissors.png" alt="ScissorImg" />' }
+    }
+
+
+    function changeResultDiv(value, data) {
+        if (value == data.playerOne.playerName + " Scores!") {
+            document.getElementById("result").style.backgroundColor = "red";
+        }
+        else if (value == data.playerTwo.playerName + " Scores!") {
+            document.getElementById("result").style.backgroundColor = "blue";
+        }
+        else {document.getElementById("result").style.backgroundColor = "lightblue";
+        }
+        document.querySelector("#result").innerHTML = value;
     }
 
 </script>
