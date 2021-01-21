@@ -3,7 +3,7 @@ using RockPaperScissorBusinessLayer;
 
 namespace RockPaperScissorTests
 {
-    public class Tests
+    public class BusinessTests
     {
         [SetUp]
         public void Setup()

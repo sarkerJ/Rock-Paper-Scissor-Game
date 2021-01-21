@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RockPaperScissorBusinessLayer\RockPaperScissorBusinessLayer.csproj" />
+    <ProjectReference Include="..\RockPaperScissorsFrontEnd\RockPaperScissorsFrontEnd.csproj" />
   </ItemGroup>
 
 </Project>
