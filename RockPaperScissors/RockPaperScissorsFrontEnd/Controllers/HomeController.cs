@@ -13,15 +13,13 @@ namespace RockPaperScissorsFrontend.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
         //Created a static model to ensure that the model is stored even after the Get method and the Post method end
         // without static the model turns to null after GetGame is returned and refreshes the page
         //static also means the player scores are now saved!
         public static GameModel gameM; 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController()
         {
-            _logger = logger;
         }
 
         public IActionResult Index()
