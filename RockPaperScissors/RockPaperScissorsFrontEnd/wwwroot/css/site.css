@@ -101,7 +101,7 @@ body {
 .containerDiv {
     align-content: center;
     background-color: white;
-    height: 60vh;
+    height: 50vh;
     overflow: hidden;
     border-radius: 2%;
 }
@@ -183,7 +183,7 @@ body {
 }
     .container1 .blocktext {
         margin: 0;
-        padding: 15px;
+        padding: 5px;
         text-align: center;
         background-color: wheat;
     }
